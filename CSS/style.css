@@ -1,0 +1,322 @@
+/* Root Variables */
+:root {
+
+  /* Color Pallete */
+  --black:                    #000000;
+  --dark-gray:                #3F3F3F;
+  --gray:                     #7F7F7F;
+  --light-gray:               #BFBFBF;
+  --white:                    #FFFFFF;
+
+  --black-fifty:              #0000007F;
+  --dark-gray-fifty:          #3F3F3F7F;
+  --gray-fifty:               #7F7F7F7F;
+  --light-gray-fifty:         #BFBFBF7F;
+  --white-fifty:              #FFFFFF7F;
+
+  /* Main Colors */
+  --html-background-color:    var(--black);
+  --background-color:         var(--black);
+  --font-color:               var(--white);
+
+  /* Font Related */
+  --font-family:              monospace;
+  --font-weight:              bold;
+
+
+  /* Outer Margin */
+  --outer-margin:             25px;
+  --top-outer-margin:         calc(var(--outer-margin) * 2);
+  --right-outer-margin:       var(--outer-margin);
+  --bottom-outer-margin:      var(--outer-margin);
+  --left-outer-margin:        var(--outer-margin);
+  --top-bottom-outer-margin:  calc(var(--top-outer-margin) + var(--bottom-outer-margin));
+  --right-left-outer-margin:  calc(var(--right-outer-margin) + var(--left-outer-margin));
+
+  /* Inner Margin */
+  --inner-margin:             10px;
+  --top-inner-margin:         var(--inner-margin);
+  --right-inner-margin:       var(--inner-margin);
+  --bottom-inner-margin:      var(--inner-margin);
+  --left-inner-margin:        var(--inner-margin);
+  --top-bottom-inner-margin:  calc(var(--top-inner-margin) + var(--bottom-inner-margin));
+  --right-left-inner-margin:  calc(var(--right-inner-margin) + var(--left-inner-margin));
+
+  /* Border Related */
+  --border-width:             5px;
+  --border-style:             solid;
+  --border-color:             var(--white);
+  --border-radius:            calc(var(--border-width) * 2);
+
+  /* Table Border Related */
+  --table-border-width:       calc(var(--border-width) / 2);
+  --table-border-style:       solid;
+  --table-border-color:       var(--white);
+
+  /* Button Related */
+  --button-background-color:  var(--black);
+  --button-font-color:        var(--white);
+
+  --button-hover-bgcolor:     var(--dark-gray);
+
+  --button-active-bgcolor:    var(--gray);
+  --button-active-color:      var(--black);
+
+  --button-border-width:      calc(var(--border-width) / 2);
+  --button-border-style:      solid;
+  --button-border-color:      var(--white);
+  --button-border-radius:     calc(var(--button-border-width) * 2);
+
+}
+
+* {
+
+  /* Font */
+  font-family:                var(--font-family);
+  font-weight:                var(--font-weight);
+
+}
+
+
+
+html {
+
+  /* Height and width of the HTML document (good practice) */
+  height:                     100vh;
+  width:                      100vw;
+
+  /* Background and font color of the HTML document */
+  background:                 var(--html-background-color);
+  color:                      var(--font-color );
+
+}
+
+
+
+header {
+
+  /* Uses the top-outer-margin for the section elements as header's height*/
+  height:                     var(--top-outer-margin);
+  width:                      100vw;
+
+  /* Positioning of the header */
+  position:                   absolute;
+  top:                        0px;
+  left:                       0px;
+
+  /* Display flex, and aligns' to center child h1 element */
+  display:                    flex;
+  align-content:              center;
+  justify-content:            center;
+
+
+  /*
+    Temporary for debugging and testing
+  background:                 green;
+  */
+
+}
+
+h1 {
+
+  /* Margin and padding to fit header's height and center correctly */
+  margin:                     0px;
+  padding:                    calc((var(--top-outer-margin) - 31px) / 2);
+  /* NOTE: 31px is the height of h1 element */
+
+  /*
+    Temporary for debugging and testing
+  background:                 blue;
+  */
+}
+
+
+
+#game-section {
+
+  /* Proportions of the game section based on the outer-margin values ( top + bottom margin for height ) ( right + left margin for width ), --border-width * 2 ( for top and bottom ) and --border-width * 1.5 ( because of the collpase border between game and stats section) */
+  height:                     calc(100vh - var(--top-bottom-outer-margin) - var(--border-width) * 2);
+  width:                      calc(70vw  - var(--left-outer-margin) - var(--border-width) * 1.5);
+
+  /* Border */
+  border:                     var(--border-width) var(--border-style) var(--border-color);
+  border-radius:              var(--border-radius);
+
+  /* Positioning */
+  position:                   absolute;
+  top:                        var(--top-outer-margin);
+  left:                       var(--left-outer-margin);
+
+  /* Background */
+  background:                 var(--background-color);
+
+  /*
+    Temporary for debugging and testing
+  background:                 blue;
+  */
+
+}
+
+#game-section > #game-container {
+
+  /* Proportion of the game-container, first it fill the entire parent container and then subtract the margin of both sides for top-bottom and right-left ( can be thought as if the #game-section had a padding value of var(--inner-margin) but I figured that having another variable into the proportions of #game-section would make it more confusing, I might change my mind later...) */
+  height:                     calc(100% - var(--top-bottom-inner-margin));
+  width:                      calc(100% - var(--right-left-inner-margin));
+
+  /* Positioning */
+  position:                   absolute;
+  top:                        var(--top-inner-margin);
+  left:                       var(--left-inner-margin);
+
+  /*
+    Temporary for debugging and testing
+  background:                 blue;
+  */
+
+}
+
+#game-container button {
+  padding: 4px 24px;
+
+  background:                 var(--button-background-color);
+  color:                      var(--button-font-color);
+
+  border:                     var(--button-border-width) var(--button-border-style) var(--button-border-color);
+  border-radius:              var(--button-border-radius);
+
+}
+
+#game-container button:hover {
+
+  background:                 var(--button-hover-bgcolor);
+  cursor:                     pointer;
+
+}
+
+#game-container button:active {
+
+  background:                 var(--button-active-bgcolor);
+  color:                      var(--button-active-color);
+
+}
+
+
+
+#stats-section {
+
+  /* Proportions of the stats section based on the outer-margin values ( top + bottom margin for height ), ( right + left margin for width ), --border-width * 2 ( for top and bottom ) and --border-width * 1.5 ( because of the collpase border between game and stats section) */
+  height:                     calc(100vh - var(--top-bottom-outer-margin) - var(--border-width) * 2);
+  width:                      calc(30vw -  var(--right-outer-margin) - var(--border-width) * 1.5);
+
+  /* Border */
+  border:                     var(--border-width) var(--border-style) var(--border-color);
+  border-radius:              var(--border-radius);
+
+  /* Positioning */
+  position:                   absolute;
+  top:                        var(--top-outer-margin);
+  right:                      var(--right-outer-margin);
+
+  /* Background */
+  background:                 var(--background-color);
+
+  /*
+    Temporary for debugging and testing
+  background:                 blue;
+  */
+
+}
+
+#stats-section > #stats-container {
+
+  /* Same as the #game-container */
+  /* Proportion of the stats-container, first it fill the entire parent container and then subtract the margin of both sides for top-bottom and right-left ( can be thought as if the #stats-section had a padding value of var(--inner-margin) but I figured that having another variable into the proportions of #game-section would make it more confusing, I might change my mind later...) */
+  height:                     calc(100% - var(--top-bottom-inner-margin));
+  width:                      calc(100% - var(--right-left-inner-margin));
+
+  /* Positioning */
+  position:                   absolute;
+  top:                        var(--top-inner-margin);
+  left:                       var(--left-inner-margin);
+
+  /*
+    Temporary for debugging and testing
+  background:                 blue;
+  */
+
+}
+
+/* This whole section is about the #stats-table */
+#stats-table {
+
+  /* Width 100% to cover all the #stats-container */
+  table-layout: fixed;
+  width: 100%;
+
+}
+
+#stats-table caption {
+
+  /* Applys only to bottom to respect the #stats-container margin ( or the #stats-section padding in case I change that ) */
+  padding-bottom:             var(--inner-margin);
+
+}
+
+  /* Selects the table, its th and td elements */
+#stats-table,
+#stats-table th,
+#stats-table td {
+
+  /* Border collapse and border styling */
+  border:                     var(--table-border-width) var(--table-border-style) var(--table-border-color);
+  border-collapse:            collapse;
+
+  overflow: hidden;
+
+}
+
+#stats-table tbody > tr:nth-child(odd) {
+
+  background:                 var(--dark-gray-fifty);
+
+}
+
+#stats-table tbody > tr:nth-child(even) {
+
+  background:                 var(--gray-fifty);
+
+}
+
+  /* Adds padding only to th and td elements */
+#stats-table th,
+#stats-table td {
+
+  padding:                    var(--inner-margin);
+
+}
+
+  /* Selects the 'Name' column */
+#stats-table th:nth-child(1) {
+
+  width:                      30%;
+
+}
+
+#stats-table td:nth-child(odd) {
+
+  text-align:                 center;
+
+}
+
+  /* Selects the 'Value' column */
+#stats-table th:nth-child(2) {
+
+  width:                      70%;
+
+}
+
+#stats-table td:nth-child(even) {
+
+  text-align:                 right;
+
+}
